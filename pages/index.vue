@@ -1,14 +1,26 @@
 <template>
   <div class="container">
     <carousel />
+    <tours />
+    <guides />
+    <about />
+    <contact />
   </div>
 </template>
 
 <script>
 import carousel from '@/components/carousel.vue'
+import tours from '@/components/tours.vue'
+import guides from '@/components/guides.vue'
+import about from '@/components/aboutus.vue'
+import contact from '@/components/contact.vue'
 export default {
   components: {
     carousel,
+    tours,
+    guides,
+    about,
+    contact,
   },
 }
 </script>
@@ -24,27 +36,6 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+  flex-direction: column;
 }
 </style>

@@ -1,14 +1,14 @@
 <template>
-  <div class="nav_wrapper">
+  <div class="nav-wrapper">
     <nav>
       <div class="logo">
-        <h3><b>Generic</b>Travel</h3>
-        <p>agency</p>
+        <h3 class="lg"><b>Generic</b>Travel</h3>
+        <p class="lg">agency</p>
       </div>
       <button>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div class="ln"></div>
+        <div class="ln"></div>
+        <div class="ln"></div>
       </button>
     </nav>
   </div>
@@ -21,12 +21,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.nav_wrapper {
+.nav-wrapper {
   width: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 5;
+  background: none;
 }
 nav {
   display: flex;
@@ -39,6 +40,7 @@ nav {
   h3,
   p {
     color: white;
+    font-weight: 300;
   }
   p {
     text-align: right;

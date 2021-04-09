@@ -12,7 +12,6 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
@@ -38,4 +37,8 @@ export default {
   build: {
     transpile: ['gsap'],
   },
+  server: {
+    port: 8000, // default: 3000
+    host: '0.0.0.0', // default: localhost
+  }, // other configs
 }
