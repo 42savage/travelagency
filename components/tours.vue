@@ -1,60 +1,38 @@
 <template>
   <div class="tour-wrapper">
-    <h1 class="heading-title">Featured <span>tours</span></h1>
+    <heading :title_first="'Featured'" :title_second="'tours'" />
     <div class="featured-tours">
-      <div v-for="tour in tours" :key="tour.id" class="single-tour">
-        <div
-          class="top"
-          :style="{
-            backgroundImage:
-              'url(' + require('~/assets/' + tour.image + '.jpg') + ')',
-          }"
-        >
-          <p class="price">${{ tour.price }}</p>
-        </div>
-        <div class="bottom flex">
-          <p class="title">
-            {{ tour.title }}
-          </p>
-          <p class="time">
-            <calendar :fill="'DB504A'" :width="18" />
-            {{ tour.time }}
-          </p>
-          <p class="travel">
-            <plane :transform="'rotate(32)'" :fill="'#DB504A'" />
-            {{ tour.travel }}
-          </p>
-          <p class="meal">
-            <fork :fill="'#DB504A'" />
-            {{ tour.meal }}
-          </p>
-          <p class="people">
-            <user :fill="'#DB504A'" />
-            {{ tour.people }}
-          </p>
-        </div>
-      </div>
+      <singleTour
+        v-for="tour in tours"
+        :key="tour.id"
+        :image="tour.image"
+        :price="tour.price"
+        :title="tour.title"
+        :time="tour.time"
+        :travel="tour.travel"
+        :meal="tour.meal"
+        :people="tour.people"
+      />
     </div>
     <gobutton :title="'Check all tours'" />
     <div class="companies">
       <h2>We have on board top airlane companies</h2>
-      <div class="wrapper">
-        <div class="single-company"><img src="~/assets/lot.png" /></div>
-        <div class="single-company"><img src="~/assets/airfrance.png" /></div>
-        <div class="single-company"><img src="~/assets/ryanair.png" /></div>
+      <div class="company-wrapper">
+        <singleCompany
+          v-for="company in companies"
+          :key="company.id"
+          :image="company.image"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import calendar from '~/components/icons/calendar'
-import plane from '~/components/icons/plane'
-import fork from '~/components/icons/fork'
-import user from '~/components/icons/user'
-import arrow from '~/components/icons/prevnext'
-
 import gobutton from '~/components/gobutton.vue'
+import heading from '~/components/heading.vue'
+import singleTour from '~/components/single-tour.vue'
+import singleCompany from '~/components/single-company.vue'
 
 export default {
   name: 'Tours',
@@ -92,43 +70,41 @@ export default {
           image: 'hotel/kobylany',
         },
       ],
+      companies: [
+        {
+          id: 0,
+          name: 'lot',
+          image: 'lot',
+        },
+        {
+          id: 1,
+          name: 'airfrance',
+          image: 'airfrance',
+        },
+        {
+          id: 2,
+          name: 'ryanair',
+          image: 'ryanair',
+        },
+      ],
     }
   },
   components: {
     gobutton,
-    plane,
-    fork,
-    user,
-    calendar,
-    arrow,
-    calendar,
+    heading,
+    singleTour,
+    singleCompany,
   },
 }
 </script>
 
 <style scoped lang="scss">
+.company-wrapper {
+  display: flex;
+  flex-direction: row;
+}
 .tour-wrapper {
   width: 100%;
-}
-.heading-title {
-  color: #084c61;
-  font-size: 24px;
-  position: relative;
-  font-weight: 500;
-  margin-top: 100px;
-  span {
-    color: #db504a;
-  }
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -18px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    height: 5px;
-    width: 80px;
-    background: #db504a;
-  }
 }
 .featured-tours {
   display: flex;
@@ -137,52 +113,7 @@ export default {
   margin-left: 36px;
   padding: 36px 0;
 }
-.single-tour {
-  flex-shrink: 0;
-  width: 222px;
-  height: 306px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 16px -4px rgba(0, 0, 0, 0.25);
-  margin: 0 9px;
-  background: #fcfcfc;
-}
-.top {
-  width: 100%;
-  height: 180px;
-  position: relative;
-}
-.bottom {
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 12px 18px;
-  p {
-    text-align: left;
-  }
-}
-.price {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background: white;
-  color: #e3b505;
-  width: 72px;
-  height: 24px;
-  font-size: 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.icon {
-  img {
-    width: 14px;
-    height: 14px;
-    margin-right: 12px;
-  }
-}
-.plane {
-  transform: rotate(32.74deg);
-}
+
 .title {
   font-size: 16px;
   color: #084c61;
@@ -193,23 +124,6 @@ export default {
 .people {
   color: #4f6d7a;
   font-size: 12px;
-}
-.checkBtn {
-  border: none;
-  color: white;
-  background: #4f6d7a;
-  border-radius: 3px;
-  width: 120px;
-  height: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  img {
-    width: 7px;
-    height: 13px;
-    transform: rotate(180deg);
-    margin-left: 6px;
-  }
 }
 .companies {
   display: flex;
@@ -223,18 +137,5 @@ export default {
     font-weight: 500;
     margin-bottom: 18px;
   }
-}
-.wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-.single-company {
-  background: #f3f3f3;
-  box-shadow: 0px 0px 8px -3px rgba(0, 0, 0, 0.25);
-  width: 80px;
-  height: 40px;
-  margin: 0 12px;
 }
 </style>

@@ -1,7 +1,10 @@
 <template>
   <div class="guides">
-    <h1 class="title">Featured <span>guides</span></h1>
-    <p class="subtitle">Guides written by best voyages in the world.</p>
+    <heading
+      :title_first="'Featured'"
+      :title_second="'guides'"
+      :subtitle="'Guides written by best voyages in the world.'"
+    />
     <div class="guides-wrapper">
       <div
         v-for="guide in guides"
@@ -48,7 +51,7 @@ export default {
           image: 'guides/cambodia',
         },
         {
-          id: 0,
+          id: 2,
           title: 'Rome',
           subtitle: 'Best place in the world',
           image: 'guides/rome',
@@ -65,32 +68,6 @@ export default {
 <style scoped lang="scss">
 .guides {
   width: 100%;
-}
-.title {
-  font-size: 24px;
-  color: #084c61;
-  font-weight: 500;
-  position: relative;
-  margin-top: 80px;
-  span {
-    color: #db504a;
-  }
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -18px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    height: 5px;
-    width: 80px;
-    background: #db504a;
-  }
-}
-.subtitle {
-  color: #858585;
-  font-size: 16px;
-  font-weight: 300;
-  margin-top: 32px;
 }
 .guides-wrapper {
   margin-top: 36px;

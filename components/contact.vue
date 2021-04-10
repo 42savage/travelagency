@@ -1,10 +1,9 @@
 <template>
   <div class="contact-wrapper">
-    <h1 class="title">Get in touch with Us</h1>
-    <p class="subtitle">
-      Just give us your phone number, we will contact with you as soon as we
-      can.
-    </p>
+    <heading
+      :title_first="'Get in touch with us'"
+      :subtitle="'Just give us your phone number, we will contact with you as soon as we can.'"
+    />
     <div class="input-container">
       <input type="text" placeholder="Contact number" /><button class="sendBtn">
         Enter
@@ -32,9 +31,9 @@
         </div>
       </div>
       <div class="socials">
-        <linkedin />
-        <facebook />
-        <instagram />
+        <linkedin :width="30" :height="30" />
+        <facebook :width="30" :height="30" />
+        <instagram :width="30" :height="30" />
       </div>
     </div>
   </div>
@@ -48,6 +47,8 @@ import linkedin from '~/components/icons/linkedin'
 import instagram from '~/components/icons/instagram'
 import pin from '~/components/icons/pin'
 
+import heading from '~/components/heading.vue'
+
 export default {
   name: 'contact',
   components: {
@@ -57,6 +58,7 @@ export default {
     instagram,
     linkedin,
     pin,
+    heading,
   },
 }
 </script>
@@ -68,30 +70,6 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-.title {
-  font-size: 24px;
-  color: #084c61;
-  font-weight: 500;
-  margin-top: 120px;
-  position: relative;
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -18px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    height: 5px;
-    width: 80px;
-    background: #db504a;
-  }
-}
-.subtitle {
-  color: #707070;
-  font-size: 14px;
-  font-weight: 500;
-  width: 260px;
-  margin-top: 36px;
 }
 .input-container {
   display: flex;
